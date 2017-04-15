@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <ScrollView
+        android:background="@drawable/shape_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <ImageView
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/ic_reply_white_48dp"
+                android:id="@+id/imgBack"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/imgBack"
+                android:layout_centerInParent="true"
+                android:textSize="24sp"
+                android:textColor="@color/colorWhite"
+                android:text="Graph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </android.support.percent.PercentRelativeLayout>
+
+
+        <com.github.mikephil.charting.charts.LineChart
+
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+           />
+
+
+        <LinearLayout
+                android:layout_marginTop="10dp"
+                android:padding="3dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:textStyle="bold"
+                    android:padding="3dp"
+                    android:textColor="@color/colorWhite"
+                    android:text=" * Click the button to choose fileds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:padding="3dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/dragCoefficient"
+                        android:background="@drawable/unactive"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:hint="2"
+
+                        >
+
+                        <TextView
+
+                            android:text="Drag Coefficient"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/textView1"
+                            android:textColor="@color/colorTextButtons"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/fictionVeiocity"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="6dp"
+                        android:background="@drawable/unactive"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:hint="2">
+
+                        <TextView
+                            android:gravity="center"
+                            android:id="@+id/textView2"
+                            android:text="Fiction veiocity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/meanFrequency"
+                        android:background="@drawable/unactive"
+                        android:padding="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:hint="2">
+
+                        <TextView
+                            android:text="Mean frequency"
+                            android:gravity="center"
+                            android:id="@+id/textView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true" />
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:padding="3dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/meanPeriod"
+                        android:background="@drawable/unactive"
+                        android:padding="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:hint="2"
+                        >
+
+                        <TextView
+                            android:text="Mean period"
+                            android:id="@+id/textView4"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="@color/colorWhite"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/meanWaveDirection"
+                        android:background="@drawable/unactive"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="6dp"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:hint="2">
+
+                        <TextView
+                            android:text="Mean wave direction"
+                            android:gravity="center"
+                            android:id="@+id/textView5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"
+                            android:layout_centerVertical="true" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/normallizedWave"
+                        android:background="@drawable/unactive"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:hint="2">
+
+                        <TextView
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:id="@+id/textView6"
+                            android:text="Normalized wave stress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"/>
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:padding="3dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/significantWaveHight"
+                        android:background="@drawable/unactive"
+                        android:padding="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:hint="2">
+
+                        <TextView
+                            android:text="Significant wave hight"
+                            android:id="@+id/textView7"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="@color/colorWhite"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/wavePeakFrequency"
+                        android:background="@drawable/unactive"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="6dp"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:hint="2">
+
+                        <TextView
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:text="Wave peak frequency"
+                            android:id="@+id/textView8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/wavePeakPeriod"
+                        android:background="@drawable/unactive"
+                        android:padding="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:hint="2">
+
+                        <TextView
+                            android:gravity="center"
+                            android:text="Wave peak period"
+                            android:id="@+id/textView9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorWhite"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true" />
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:padding="3dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:id="@+id/windDirection"
+                        android:background="@drawable/unactive"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:hint="2">
+
+                        <TextView
+                            android:text="Wind direction"
+                            android:id="@+id/textView10"
+                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:textColor="@color/colorWhite"/>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/windSpeed"
+                        android:background="@drawable/unactive"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="6dp"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:hint="2">
+
+                        <TextView
+                            android:text="Wind Speed"
+                            android:id="@+id/textView11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true"
+                            android:textColor="@color/colorWhite"/>
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="2"
+                        android:hint="2">
+
+
+
+                    </RelativeLayout>
+
+
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+</layout>
