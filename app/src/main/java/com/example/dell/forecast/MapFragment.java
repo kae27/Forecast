@@ -9,9 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 
 /**
@@ -34,7 +39,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private OnFragmentInteractionListener mListener;
     MapView mapView;
-    GoogleMap mMap;
+    private GoogleMap googleMap;
 
 
     public MapFragment() {
@@ -75,8 +80,18 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         // Inflate the layout for this fragment
 
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
-        mapView = (MapView) rootView.findViewById(R.id.mapview);
 
+        mapView = (MapView) rootView.findViewById(R.id.mapview);
+        mapView.onCreate(savedInstanceState);
+        mapView.onResume(); // needed to get the map to display immediately
+
+        try
+        {
+            MapsInitializer.initialize(getActivity().getApplicationContext());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        mapView.getMapAsync(this);
 
         Button chartVeiewBtn = (Button) rootView.findViewById(R.id.ChartViewButton);
         chartVeiewBtn.setOnClickListener(new View.OnClickListener(){
@@ -136,25 +151,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap)
-    {
-       mMap = googleMap;
-//
-//        LatLng coordinateThailand = new LatLng(14, 100);
-//        mMap.setMyLocationEnabled(true);
-//        mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-//        mMap.addMarker(new MarkerOptions().position(coordinateThailand).title("Thailand"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(coordinateThailand));
-//
-//        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener()
-//        {
-//            public void onMapClick(LatLng latLng)
-//            {
-//                Log.e("latlong", latLng.latitude + "-" + latLng.longitude);
-//            }
-//        } );
+    public void onMapReady(GoogleMap mMap) {
 
+        googleMap = mMap;
+
+        LatLng sydney = new LatLng(13, 101);
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker Title").snippet("Marker Description"));
+
+        // For zooming automatically to the location of the marker
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(5).build();
+        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
-
-
 }
