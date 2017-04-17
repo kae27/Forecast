@@ -1,13 +1,19 @@
 package com.example.dell.forecast;
 
-import android.content.Intent;
+import android.Manifest;
+import android.content.Intent;;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -17,6 +23,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 
 /**
@@ -40,6 +48,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private OnFragmentInteractionListener mListener;
     MapView mapView;
     private GoogleMap googleMap;
+    private Polygon polygon;
+    private Double initailArrayX,initailArrayY;
 
 
     public MapFragment() {
@@ -84,6 +94,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mapView = (MapView) rootView.findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
         mapView.onResume(); // needed to get the map to display immediately
+
 
         try
         {
@@ -154,13 +165,45 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap mMap) {
 
         googleMap = mMap;
+        LatLng bangkok = new LatLng(13, 101);
 
-        LatLng sydney = new LatLng(13, 101);
+//        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
+//                == PackageManager.PERMISSION_GRANTED) {
+//            googleMap.setMyLocationEnabled(true);
+//        } else {
+//            // Show rationale and request permission.
+//        }
+
         googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker Title").snippet("Marker Description"));
+        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener()
+        {
+            @Override
+            public void onMapClick(LatLng latLng)
+            {
+                Log.e("latlong", latLng.latitude + "-" + latLng.longitude);
+
+                initailArrayX = latLng.latitude%15;
+                initailArrayY = latLng.longitude%95;
+                Log.i("test", initailArrayX + "-" + initailArrayY);
+
+            }
+        });
+
+
+        polygon = mMap.addPolygon(new PolygonOptions()
+                .add(new LatLng(15, 95),
+                        new LatLng(15, 105.08),
+                        new LatLng(4.92, 105.08),
+                        new LatLng(4.92, 95))
+                .strokeColor(Color.RED).strokeWidth(1)
+                .fillColor(Color.parseColor("#30000000")));
+
+
 
         // For zooming automatically to the location of the marker
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(sydney).zoom(5).build();
+        googleMap.addMarker(new MarkerOptions().position(bangkok).title("Thailand"));
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(bangkok).zoom(5).build();
         googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
+
 }
