@@ -4,19 +4,13 @@
     android:layout_height="match_parent"
     tools:context="com.example.dell.forecast.MapFragment">
 
-    <!-- TODO: Update blank fragment layout -->
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1"
-    android:orientation="vertical">
     <com.google.android.gms.maps.MapView
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:id="@+id/mapview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.9"
+        android:layout_height="565dp"
+
         />
 
     <Button
@@ -24,14 +18,10 @@
         android:layout_height="50dp"
         android:id="@+id/ChartViewButton"
         android:text="ForeCast View"
-        android:layout_gravity="bottom"
-
+        android:layout_marginTop="515dp"
 
         />
 
-
-
-</LinearLayout>
 
 
 

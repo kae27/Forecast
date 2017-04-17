@@ -156,7 +156,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         googleMap = mMap;
 
         LatLng sydney = new LatLng(13, 101);
-        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker Title").snippet("Marker Description"));
 
         // For zooming automatically to the location of the marker
