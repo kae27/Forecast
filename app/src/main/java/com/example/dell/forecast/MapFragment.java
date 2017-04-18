@@ -108,6 +108,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ChartViewActivity.class);
+                intent.putExtra("ValueX",fileNameX);
+                intent.putExtra("ValueY",fileNameY);
                 startActivity(intent);
 
 
@@ -184,17 +186,31 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                 arrayX = latLng.longitude-95;
                 arrayY = latLng.latitude-4.92;
-                Log.i("test", arrayX + "-" + arrayY);
-
                 arrayX = (arrayX/0.0826)-1;
                 arrayY = 122-(arrayY/0.0826);
 
                 pointX = arrayX.intValue();
                 pointY = arrayY.intValue();
-                Log.i("pointY",pointX + "-" +pointY);
+                Log.i("point",pointX + "-" +pointY);
 
                 fileNameX = String.valueOf(pointX);
-                fileNameX = String.valueOf(pointY);
+                fileNameY = String.valueOf(pointY);
+                fileNameX = "00"+fileNameX;
+                fileNameY = "00"+fileNameY;
+
+                if(fileNameX.length()==4)
+                {
+                    fileNameX = fileNameX.substring(1);
+                    fileNameY = fileNameY.substring(1);
+                }
+                else if (fileNameX.length()==5)
+                {
+                    fileNameX = fileNameX.substring(2);
+                    fileNameY = fileNameY.substring(2);
+                }
+
+                Log.i("name",""+fileNameX+"- " + fileNameY);
+
 
 
             }

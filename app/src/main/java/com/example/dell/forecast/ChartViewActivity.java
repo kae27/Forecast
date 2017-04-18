@@ -114,6 +114,12 @@ public class ChartViewActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
 
+        Bundle bundle = getIntent().getExtras(); // create  bundle for get data from MapFragment
+        String valueX = bundle.getString("ValueX");
+        String valueY = bundle.getString("ValueY");
+        Log.i("get data", valueX +","+valueY);
+
+
 
         binding = DataBindingUtil.setContentView(ChartViewActivity.this,R.layout.activity_chart_view);
 
