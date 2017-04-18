@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -22,6 +23,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
+
+import java.text.DecimalFormat;
 
 
 /**
@@ -44,11 +47,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     private OnFragmentInteractionListener mListener;
     MapView mapView;
+    TextView latView, lngView, ArrayX,ArrayY;
     private GoogleMap googleMap;
     private Polygon polygon;
     private Double arrayX, arrayY;
     private int pointX,pointY;
     private String fileNameX,fileNameY;
+
 
 
     public MapFragment() {
@@ -89,6 +94,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         // Inflate the layout for this fragment
 
         View rootView = inflater.inflate(R.layout.fragment_map, container, false);
+
+        latView =(TextView) rootView.findViewById(R.id.lat_view);
+        lngView =(TextView) rootView.findViewById(R.id.lng_view);
+        ArrayX =(TextView) rootView.findViewById(R.id.array_x);
+        ArrayY =(TextView) rootView.findViewById(R.id.array_y);
 
         mapView = (MapView) rootView.findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
@@ -165,6 +175,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap mMap) {
 
+        final DecimalFormat REAL_FORMATTER = new DecimalFormat("0.###");
         googleMap = mMap;
         LatLng bangkok = new LatLng(13, 101);
 
@@ -184,6 +195,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             {
                 Log.e("latlong", latLng.longitude + "-" + latLng.latitude);
 
+                latView.setText(REAL_FORMATTER.format(latLng.latitude));
+                lngView.setText(REAL_FORMATTER.format(latLng.longitude));
+
                 arrayX = latLng.longitude-95;
                 arrayY = latLng.latitude-4.92;
                 arrayX = (arrayX/0.0826)-1;
@@ -193,8 +207,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 pointY = arrayY.intValue();
                 Log.i("point",pointX + "-" +pointY);
 
+
+
                 fileNameX = String.valueOf(pointX);
                 fileNameY = String.valueOf(pointY);
+                if((pointX>=0&&pointX<=121) &&(pointY>=0&&pointY<=121) )
+                {
+                    ArrayX.setText(fileNameX);
+                    ArrayY.setText(fileNameY);
+                }
+                else
+                {
+                    ArrayX.setText("-");
+                    ArrayY.setText("-");
+                }
 
 
                 if(fileNameX.length()==1)
