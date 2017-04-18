@@ -195,18 +195,25 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                 fileNameX = String.valueOf(pointX);
                 fileNameY = String.valueOf(pointY);
-                fileNameX = "00"+fileNameX;
-                fileNameY = "00"+fileNameY;
 
-                if(fileNameX.length()==4)
+
+                if(fileNameX.length()==1)
                 {
-                    fileNameX = fileNameX.substring(1);
-                    fileNameY = fileNameY.substring(1);
+                    fileNameX = "00"+fileNameX;
                 }
-                else if (fileNameX.length()==5)
+                else if (fileNameX.length()==2)
                 {
-                    fileNameX = fileNameX.substring(2);
-                    fileNameY = fileNameY.substring(2);
+                    fileNameX = "0"+fileNameX;
+                }
+
+
+                if (fileNameY.length()==1)
+                {
+                    fileNameY = "00"+fileNameY;
+                }
+                else if (fileNameY.length()==2)
+                {
+                    fileNameY = "0"+fileNameY;
                 }
 
                 Log.i("name",""+fileNameX+"- " + fileNameY);

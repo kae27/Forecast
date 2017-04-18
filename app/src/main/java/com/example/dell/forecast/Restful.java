@@ -25,6 +25,7 @@ public class Restful {
     // ใช้ยิงไปยัง server
     private final String url = "http://192.168.137.1/untitled/";
 
+
     // arraylist สำหรับเก็บข้อมูลที่ response มาจาก server
     ArrayList<LocationMapResponseModel> ListResponseModel = new ArrayList<LocationMapResponseModel>();
 
@@ -33,8 +34,10 @@ public class Restful {
     PointModel requestModel;
 
 
-    public  void createService(final callback CallbackListener)
+    public  void createService(final callback CallbackListener ,String getPointX, String getPointY)
     {
+
+        Log.e(TAG, getPointX+","+getPointY);
 
         // ข้อมูลสำหรับส่งขึ้นไป server
 //        requestModel =  new PointModel("001","003");
@@ -48,7 +51,7 @@ public class Restful {
         final MyApiEndpointInterface requestService = retrofit.create(MyApiEndpointInterface.class);
 
         // create caller
-        Call<LocationMapResponseModel> call = requestService.getDataFromServer("001","003");
+        Call<LocationMapResponseModel> call = requestService.getDataFromServer(getPointX,getPointY);
 //        Call<LocationMapResponseModel> call = requestService.getDataFromServer();
 
 

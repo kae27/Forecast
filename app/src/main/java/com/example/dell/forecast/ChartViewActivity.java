@@ -123,8 +123,6 @@ public class ChartViewActivity extends AppCompatActivity
 
         binding = DataBindingUtil.setContentView(ChartViewActivity.this,R.layout.activity_chart_view);
 
-
-
         binding.dragCoefficient.setOnClickListener(Onclick);
         binding.fictionVeiocity.setOnClickListener(Onclick);
         binding.meanFrequency.setOnClickListener(Onclick);
@@ -181,7 +179,7 @@ public class ChartViewActivity extends AppCompatActivity
         // drawChart();
         Log.e("ViewActivity","size of temp ");
 
-        new Restful().createService(callback);
+        new Restful().createService(callback,valueX,valueY);
     }
 
     View.OnClickListener Onclick = new View.OnClickListener()
