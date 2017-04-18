@@ -1,13 +1,10 @@
 package com.example.dell.forecast;
 
-import android.Manifest;
 import android.content.Intent;;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,7 +46,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     MapView mapView;
     private GoogleMap googleMap;
     private Polygon polygon;
-    private Double initailArrayX,initailArrayY;
+    private Double arrayX, arrayY;
+    private int pointX,pointY;
+    private String fileNameX,fileNameY;
 
 
     public MapFragment() {
@@ -175,16 +174,28 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 //        }
 
         googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
         googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener()
         {
             @Override
             public void onMapClick(LatLng latLng)
             {
-                Log.e("latlong", latLng.latitude + "-" + latLng.longitude);
+                Log.e("latlong", latLng.longitude + "-" + latLng.latitude);
 
-                initailArrayX = latLng.latitude%15;
-                initailArrayY = latLng.longitude%95;
-                Log.i("test", initailArrayX + "-" + initailArrayY);
+                arrayX = latLng.longitude-95;
+                arrayY = latLng.latitude-4.92;
+                Log.i("test", arrayX + "-" + arrayY);
+
+                arrayX = (arrayX/0.0826)-1;
+                arrayY = 122-(arrayY/0.0826);
+
+                pointX = arrayX.intValue();
+                pointY = arrayY.intValue();
+                Log.i("pointY",pointX + "-" +pointY);
+
+                fileNameX = String.valueOf(pointX);
+                fileNameX = String.valueOf(pointY);
+
 
             }
         });
