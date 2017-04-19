@@ -71,18 +71,7 @@ public class SettingsFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_settings, container, false);
 
-        switchStatus = (TextView) rootView.findViewById(R.id.switchStatus);
-        downloadSwitch = (Switch) rootView.findViewById(R.id.downloadSwitch);
-        downloadSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    Log.v("Switch State=", ""+isChecked);
-                } else {
-                    Log.v("Switch State=", ""+isChecked);
-                }
-            }
-        });
+
         return rootView;
     }
 

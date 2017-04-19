@@ -18,6 +18,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -177,7 +178,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         final DecimalFormat REAL_FORMATTER = new DecimalFormat("0.###");
         googleMap = mMap;
-        LatLng bangkok = new LatLng(13, 101);
+        LatLng bangkok = new LatLng(11, 99);
 
 //        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
 //                == PackageManager.PERMISSION_GRANTED) {
@@ -186,7 +187,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 //            // Show rationale and request permission.
 //        }
 
-        googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener()
         {
@@ -195,8 +196,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             {
                 Log.e("latlong", latLng.longitude + "-" + latLng.latitude);
 
-                latView.setText(REAL_FORMATTER.format(latLng.latitude));
-                lngView.setText(REAL_FORMATTER.format(latLng.longitude));
+                latView.setText("Lat : "+REAL_FORMATTER.format(latLng.latitude));
+                lngView.setText("Lng : "+REAL_FORMATTER.format(latLng.longitude));
 
                 arrayX = latLng.longitude-95;
                 arrayY = latLng.latitude-4.92;
@@ -213,13 +214,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 fileNameY = String.valueOf(pointY);
                 if((pointX>=0&&pointX<=121) &&(pointY>=0&&pointY<=121) )
                 {
-                    ArrayX.setText(fileNameX);
-                    ArrayY.setText(fileNameY);
+                    ArrayX.setText("X : "+fileNameX);
+                    ArrayY.setText("Y : "+fileNameY);
                 }
                 else
                 {
-                    ArrayX.setText("-");
-                    ArrayY.setText("-");
+                    ArrayX.setText("X : -");
+                    ArrayY.setText("Y : -");
                 }
 
 
@@ -243,7 +244,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 }
 
                 Log.i("name",""+fileNameX+"- " + fileNameY);
-
 
 
             }
