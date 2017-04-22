@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new NewsFragment();
                         break;
                     case 1:
-                        fragment = new NewsFragment();
+                        fragment = new WeatherFragment();
                         break;
                     case 2:
                         fragment = new MapFragment();

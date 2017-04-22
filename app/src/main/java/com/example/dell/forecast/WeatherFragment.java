@@ -1,26 +1,23 @@
 package com.example.dell.forecast;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link NewsFragment.OnFragmentInteractionListener} interface
+ * {@link WeatherFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link NewsFragment#newInstance} factory method to
+ * Use the {@link WeatherFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NewsFragment extends Fragment {
+public class WeatherFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -29,10 +26,10 @@ public class NewsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    RecyclerView recyclerView;
+
     private OnFragmentInteractionListener mListener;
 
-    public NewsFragment() {
+    public WeatherFragment() {
         // Required empty public constructor
     }
 
@@ -42,11 +39,11 @@ public class NewsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment NewsFragment.
+     * @return A new instance of fragment WeatherFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NewsFragment newInstance(String param1, String param2) {
-        NewsFragment fragment = new NewsFragment();
+    public static WeatherFragment newInstance(String param1, String param2) {
+        WeatherFragment fragment = new WeatherFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,15 +64,7 @@ public class NewsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_news, container, false);
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(new RecycleViewAdapter());
-        recyclerView.setLayoutManager(llm);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-
-        return rootView;
+        return inflater.inflate(R.layout.fragment_weather, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -115,43 +104,5 @@ public class NewsFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-    }
-
-
-    public class RecycleViewAdapter extends RecyclerView.Adapter<NewsViewHolder>
-    {
-        @Override
-        public NewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_listview, parent, false);
-            return new NewsViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(NewsViewHolder holder, int position) {
-
-            holder.titleTextview.setText("testTitle");
-        }
-
-        @Override
-        public int getItemCount() {
-            return 10;
-        }
-    }
-
-    public class NewsViewHolder extends RecyclerView.ViewHolder
-    {
-        TextView titleTextview;
-        ImageView iconImageview;
-        ImageView imageListView;
-
-        public NewsViewHolder(View itemView) {
-            super(itemView);
-
-            titleTextview = (TextView)itemView.findViewById(R.id.listview_title);
-            iconImageview = (ImageView)itemView.findViewById(R.id.listview_icon);
-            imageListView = (ImageView)itemView.findViewById(R.id.imagelistview);
-
-        }
     }
 }
