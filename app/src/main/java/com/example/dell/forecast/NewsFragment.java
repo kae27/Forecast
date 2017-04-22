@@ -3,9 +3,12 @@ package com.example.dell.forecast;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 /**
@@ -25,7 +28,7 @@ public class NewsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    RecyclerView recyclerView;
     private OnFragmentInteractionListener mListener;
 
     public NewsFragment() {
@@ -63,7 +66,13 @@ public class NewsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_news, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_news, container, false);
+
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(new RecycleViewAdapter());
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -103,5 +112,43 @@ public class NewsFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+
+    public class RecycleViewAdapter extends RecyclerView.Adapter<ViewHolder>
+    {
+        @Override
+        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_listview, parent, false);
+            return new ViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(ViewHolder holder, int position) {
+
+            holder.titleTextview.setText("testTitle");
+        }
+
+        @Override
+        public int getItemCount() {
+            return 10;
+        }
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder
+    {
+        TextView titleTextview;
+        ImageView iconImageview;
+        ImageView imageListView;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+
+            titleTextview = (TextView)itemView.findViewById(R.id.listview_title);
+            iconImageview = (ImageView)itemView.findViewById(R.id.listview_icon);
+            imageListView = (ImageView)itemView.findViewById(R.id.imagelistview);
+
+        }
     }
 }
