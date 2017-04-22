@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     public void initUI()
     {
         final ViewPager viewPager = (ViewPager) findViewById(R.id.vp_horizontal_ntb);
-        final String[] colors = getResources().getStringArray(R.array.vertical_ntb);
+        final String[] colors = getResources().getStringArray(R.array.greenAppbar);
         final NavigationTabBar navigationTabBar = (NavigationTabBar) findViewById(R.id.ntb_horizontal);
         final ArrayList<NavigationTabBar.Model> models = new ArrayList<>();
 
