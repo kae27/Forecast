@@ -3,6 +3,7 @@ package com.example.dell.forecast;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,10 +68,12 @@ public class NewsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_news, container, false);
-
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(new RecycleViewAdapter());
+        recyclerView.setLayoutManager(llm);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
 
         return rootView;
     }
