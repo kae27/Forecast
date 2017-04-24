@@ -130,7 +130,7 @@ public class NewsFragment extends Fragment {
         @Override
         public void onBindViewHolder(NewsViewHolder holder, int position) {
 
-            holder.titleTextview.setText("testTitle");
+            holder.titleTextview.setText("พายุฤดูร้อนถล่มเมืองมะขาม ชาวบ้านโอดเสียหายรุนแรงในรอบ 100 ปี ");
         }
 
         @Override
@@ -142,15 +142,16 @@ public class NewsFragment extends Fragment {
     public class NewsViewHolder extends RecyclerView.ViewHolder
     {
         TextView titleTextview;
+        TextView contentTextview;
         ImageView iconImageview;
-        ImageView imageListView;
+
 
         public NewsViewHolder(View itemView) {
             super(itemView);
 
-            titleTextview = (TextView)itemView.findViewById(R.id.listview_title);
-            iconImageview = (ImageView)itemView.findViewById(R.id.listview_icon);
-            imageListView = (ImageView)itemView.findViewById(R.id.imagelistview);
+            titleTextview = (TextView)itemView.findViewById(R.id.list_view_title);
+            iconImageview = (ImageView)itemView.findViewById(R.id.list_view_icon);
+
 
         }
     }

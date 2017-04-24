@@ -4,72 +4,71 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingRight="20dp"
-    android:paddingLeft="20dp"
-
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
     android:orientation="vertical">
-    <!-- A CardView that contains a TextView -->
+
         <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
         android:alpha="0.7"
-        card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="5dp"
+        card_view:cardCornerRadius="5dp"
+        card_view:cardElevation="2dp"
         card_view:cardUseCompatPadding="true">
 
 
-    <LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/layout"
+                android:layout_width="wrap_content"
+                android:layout_height="180dp"
+                android:background="#77FFFFFF"
+                android:paddingRight="10dp">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        
-        <RelativeLayout
-            android:id="@+id/layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#77FFFFFF"
-            android:paddingRight="24dp">
-            
-            <ImageView
-                android:id="@+id/listview_icon"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:scaleType="fitStart"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="16dp"
-                android:padding="3dp"
-                android:layout_centerVertical="true"
-                android:src="@color/candy_dark"/>
-            
-            <TextView
-                android:id="@+id/listview_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:layout_marginTop="4dp"/>
+                <ImageView
+                    android:id="@+id/list_view_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="fitStart"
+                    android:padding="7dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/news"/>
 
+                <TextView
+                    android:id="@+id/list_view_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="110dp"
+                    android:text="Title"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:layout_marginTop="4dp"/>
 
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/imagelistview"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_below="@+id/layout"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            android:src="@color/dark_light"/>
-
-          </LinearLayout>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/content_news_text_view"
+                    android:layout_below="@id/list_view_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="110dp"
+                    android:text="เกิดพายุฝนกระหน่ำในพื้นที่ อ.หล่มสัก จ.เพชรบูรณ์ นานกว่า 2 ชั่วโมง สร้างความเสียหายไปทั่วพื้นที่ ต้นไม้ได้หักโค่น บ้านเรือน โรงเรียนได้รับความเสียหาย
+"/>
+                <TextView
+                    android:id="@+id/date_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/content_news_text_view"
+                    android:layout_marginLeft="110dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/read_more_share"
+                    android:textColor="#4481eb"
+                    android:text="พุธ,26/4/2560"
+                    android:layout_alignParentRight="true"/>
 
 
-    </android.support.v7.widget.CardView>
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
 </LinearLayout>
