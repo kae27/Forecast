@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.example.dell.forecast.databinding.ActivityChartViewBinding;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
@@ -20,11 +19,11 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
-
 import java.util.ArrayList;
-
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
+
+
 
 public class ChartViewActivity extends AppCompatActivity
 {

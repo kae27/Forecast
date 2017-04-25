@@ -5,15 +5,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.example.dell.forecast.databinding.FragmentNewsBinding;
-import com.example.dell.forecast.databinding.ItemsListviewBinding;
+
 
 
 /**
@@ -82,7 +78,7 @@ public class NewsFragment extends Fragment {
     {
         LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
         fragmentNewsBinding.recyclerview.setHasFixedSize(true);
-        fragmentNewsBinding.recyclerview.setAdapter(new RecycleViewAdapter());
+        fragmentNewsBinding.recyclerview.setAdapter(new NewsRecycleViewAdapter());
         fragmentNewsBinding.recyclerview.setLayoutManager(MyLayoutManager);
         MyLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
     }
@@ -127,30 +123,7 @@ public class NewsFragment extends Fragment {
     }
 
 
-    public class RecycleViewAdapter extends RecyclerView.Adapter<NewsViewHolder>
-    {
-        ItemsListviewBinding itemsListviewBinding;
-        @Override
-        public NewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            itemsListviewBinding = ItemsListviewBinding.inflate(inflater, parent, false);
-
-            return new NewsViewHolder(itemsListviewBinding.getRoot());
-
-        }
-
-        @Override
-        public void onBindViewHolder(NewsViewHolder holder, int position) {
-
-//            holder.titleTextview.setText("พายุฤดูร้อนถล่มเมืองมะขาม ชาวบ้านโอดเสียหายรุนแรงในรอบ 100 ปี ");
-        }
-
-        @Override
-        public int getItemCount() {
-            return 10;
-        }
-    }
 
 
 }
