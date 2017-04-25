@@ -1,74 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingRight="10dp"
     android:paddingLeft="10dp"
     android:orientation="vertical">
 
-        <android.support.v7.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:alpha="0.7"
-        card_view:cardCornerRadius="5dp"
-        card_view:cardElevation="2dp"
-        card_view:cardUseCompatPadding="true">
+    <android.support.v7.widget.CardView
+    android:id="@+id/card_view"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="3dp"
+    card_view:cardElevation="1dp"
+    card_view:cardUseCompatPadding="true">
 
 
-            <RelativeLayout
-                android:id="@+id/layout"
+        <RelativeLayout
+            android:id="@+id/layout"
+            android:layout_width="wrap_content"
+            android:layout_height="180dp"
+            android:background="#77FFFFFF"
+            android:paddingRight="10dp">
+
+            <ImageView
+                android:id="@+id/list_view_icon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="fitStart"
+                android:padding="7dp"
+                android:background="@color/blood_dark"
+                android:src="@drawable/news"/>
+
+            <TextView
+                android:id="@+id/list_view_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="110dp"
+                android:text="Title"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:layout_marginTop="4dp"/>
+
+            <TextView
+                android:id="@+id/content_news_text_view"
+                android:layout_below="@id/list_view_title"
                 android:layout_width="wrap_content"
-                android:layout_height="180dp"
-                android:background="#77FFFFFF"
-                android:paddingRight="10dp">
-
-                <ImageView
-                    android:id="@+id/list_view_icon"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:scaleType="fitStart"
-                    android:padding="7dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/news"/>
-
-                <TextView
-                    android:id="@+id/list_view_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="110dp"
-                    android:text="Title"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:layout_marginTop="4dp"/>
-
-                <TextView
-                    android:id="@+id/content_news_text_view"
-                    android:layout_below="@id/list_view_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="110dp"
-                    android:text="เกิดพายุฝนกระหน่ำในพื้นที่ อ.หล่มสัก จ.เพชรบูรณ์ นานกว่า 2 ชั่วโมง สร้างความเสียหายไปทั่วพื้นที่ ต้นไม้ได้หักโค่น บ้านเรือน โรงเรียนได้รับความเสียหาย
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="110dp"
+                android:text="เกิดพายุฝนกระหน่ำในพื้นที่ อ.หล่มสัก จ.เพชรบูรณ์ นานกว่า 2 ชั่วโมง สร้างความเสียหายไปทั่วพื้นที่ ต้นไม้ได้หักโค่น บ้านเรือน โรงเรียนได้รับความเสียหาย
 "/>
-                <TextView
-                    android:id="@+id/date_text_view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/content_news_text_view"
-                    android:layout_marginLeft="110dp"
-                    android:layout_marginTop="5dp"
-                    android:textSize="@dimen/read_more_share"
-                    android:textColor="#4481eb"
-                    android:text="พุธ,26/4/2560"
-                    android:layout_alignParentRight="true"/>
+            <TextView
+                android:id="@+id/date_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/content_news_text_view"
+                android:layout_marginLeft="110dp"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/read_more_share"
+                android:textColor="#4481eb"
+                android:text="พุธ,26/4/2560"
+                android:layout_alignParentRight="true"/>
 
 
 
-            </RelativeLayout>
+        </RelativeLayout>
 
 
-        </android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView>
 </LinearLayout>
+</layout>

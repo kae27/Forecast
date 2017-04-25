@@ -10,6 +10,48 @@ import java.util.ArrayList;
 
 public class LocationMapResponseModel
 {
+    @SerializedName("date")
+    String Date;
+
+    @SerializedName("WAM_DRAG_CO")
+    float WamDragCo;
+
+    @SerializedName("WAM_M_PERIO")
+    float Wam_mPerio;
+
+    @SerializedName("WAM_P_PERIO")
+    float Wam_pPerio;
+
+    @SerializedName("WAM_M_FREQY")
+    float Wam_mFreqy;
+
+    @SerializedName("WAM_P_FREQY")
+    float Wam_pFreqy;
+
+    @SerializedName("WAM_USTAR10")
+    float WamUstar10;
+
+    @SerializedName("WAM_WAVEDIR")
+    float WamWaveDir;
+
+    @SerializedName("WAM_WAVEHGT")
+    float WamWaveHgt;
+
+    @SerializedName("WAM_WAVESTE")
+    float WamWaveSte;
+
+    @SerializedName("WAM_WINDDIR")
+    float WamWindDir;
+
+    @SerializedName("WAM_WINDSPD")
+    float WamWindSpd;
+
+    @SerializedName("success")
+    int success;
+
+
+    @SerializedName("tmd")
+    ArrayList<LocationMapResponseModel> responseModels;
 
     public LocationMapResponseModel(String date, float wamDragCo, float wam_mPerio, float wam_pPerio, float wam_mFreqy, float wam_pFreqy, float wamUstar10, float wamWaveDir, float wamWaveHgt, float wamWaveSte, float wamWindDir, float wamWindSpd) {
         Date = date;
@@ -114,50 +156,6 @@ public class LocationMapResponseModel
         WamWindSpd = wamWindSpd;
     }
 
-    @SerializedName("date")
-    String Date;
-
-    @SerializedName("WAM_DRAG_CO")
-    float WamDragCo;
-
-    @SerializedName("WAM_M_PERIO")
-    float Wam_mPerio;
-
-    @SerializedName("WAM_P_PERIO")
-    float Wam_pPerio;
-
-    @SerializedName("WAM_M_FREQY")
-    float Wam_mFreqy;
-
-    @SerializedName("WAM_P_FREQY")
-    float Wam_pFreqy;
-
-    @SerializedName("WAM_USTAR10")
-    float WamUstar10;
-
-    @SerializedName("WAM_WAVEDIR")
-    float WamWaveDir;
-
-    @SerializedName("WAM_WAVEHGT")
-    float WamWaveHgt;
-
-    @SerializedName("WAM_WAVESTE")
-    float WamWaveSte;
-
-    @SerializedName("WAM_WINDDIR")
-    float WamWindDir;
-
-    @SerializedName("WAM_WINDSPD")
-    float WamWindSpd;
-
-    @SerializedName("success")
-    int success;
-
-
-
-
-    @SerializedName("tmd")
-    ArrayList<LocationMapResponseModel> responseModels;
 
 
 

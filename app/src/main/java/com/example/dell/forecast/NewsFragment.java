@@ -1,5 +1,6 @@
 package com.example.dell.forecast;
 
+import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.dell.forecast.databinding.FragmentNewsBinding;
+import com.example.dell.forecast.databinding.ItemsListviewBinding;
 
 
 /**
@@ -29,7 +33,7 @@ public class NewsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    RecyclerView recyclerView;
+    FragmentNewsBinding fragmentNewsBinding;
     private OnFragmentInteractionListener mListener;
 
     public NewsFragment() {
@@ -66,16 +70,21 @@ public class NewsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_news, container, false);
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(new RecycleViewAdapter());
-        recyclerView.setLayoutManager(llm);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
+
+        fragmentNewsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_news, container, false);
+        View rootView = fragmentNewsBinding.getRoot();
+        initInstance();
 
         return rootView;
+    }
+
+    public void initInstance()
+    {
+        LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
+        fragmentNewsBinding.recyclerview.setHasFixedSize(true);
+        fragmentNewsBinding.recyclerview.setAdapter(new RecycleViewAdapter());
+        fragmentNewsBinding.recyclerview.setLayoutManager(MyLayoutManager);
+        MyLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -120,17 +129,21 @@ public class NewsFragment extends Fragment {
 
     public class RecycleViewAdapter extends RecyclerView.Adapter<NewsViewHolder>
     {
+        ItemsListviewBinding itemsListviewBinding;
         @Override
         public NewsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_listview, parent, false);
-            return new NewsViewHolder(view);
+            LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+            itemsListviewBinding = ItemsListviewBinding.inflate(inflater, parent, false);
+
+            return new NewsViewHolder(itemsListviewBinding.getRoot());
+
         }
 
         @Override
         public void onBindViewHolder(NewsViewHolder holder, int position) {
 
-            holder.titleTextview.setText("พายุฤดูร้อนถล่มเมืองมะขาม ชาวบ้านโอดเสียหายรุนแรงในรอบ 100 ปี ");
+//            holder.titleTextview.setText("พายุฤดูร้อนถล่มเมืองมะขาม ชาวบ้านโอดเสียหายรุนแรงในรอบ 100 ปี ");
         }
 
         @Override
@@ -139,20 +152,5 @@ public class NewsFragment extends Fragment {
         }
     }
 
-    public class NewsViewHolder extends RecyclerView.ViewHolder
-    {
-        TextView titleTextview;
-        TextView contentTextview;
-        ImageView iconImageview;
 
-
-        public NewsViewHolder(View itemView) {
-            super(itemView);
-
-            titleTextview = (TextView)itemView.findViewById(R.id.list_view_title);
-            iconImageview = (ImageView)itemView.findViewById(R.id.list_view_icon);
-
-
-        }
-    }
 }
