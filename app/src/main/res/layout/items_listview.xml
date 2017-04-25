@@ -52,8 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="110dp"
-                android:text="เกิดพายุฝนกระหน่ำในพื้นที่ อ.หล่มสัก จ.เพชรบูรณ์ นานกว่า 2 ชั่วโมง สร้างความเสียหายไปทั่วพื้นที่ ต้นไม้ได้หักโค่น บ้านเรือน โรงเรียนได้รับความเสียหาย
-"/>
+                android:text="content"/>
             <TextView
                 android:id="@+id/date_text_view"
                 android:layout_width="wrap_content"

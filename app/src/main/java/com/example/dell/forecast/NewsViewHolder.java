@@ -1,10 +1,9 @@
 package com.example.dell.forecast;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.dell.forecast.databinding.ItemsListviewBinding;
 
@@ -25,8 +24,10 @@ public class NewsViewHolder extends RecyclerView.ViewHolder
 
     }
 
-    public void bind()
+    public void bind(NewsListModel model, Context context)
     {
+        itemsListviewBinding.listViewTitle.setText(model.getTitle_text()); //id ถ้าตั้งแบบมี ีunderscore มันจะเปลี่ยนเป็นตัวหนัสือตัวใหญ่ให้
+        itemsListviewBinding.contentNewsTextView.setText(model.getContent_text());
 
     }
 }

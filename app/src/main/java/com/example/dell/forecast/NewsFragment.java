@@ -1,5 +1,6 @@
 package com.example.dell.forecast;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.dell.forecast.databinding.FragmentNewsBinding;
 
+import java.util.ArrayList;
 
 
 /**
@@ -29,6 +31,9 @@ public class NewsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    ArrayList<NewsListModel> dataList = new ArrayList<NewsListModel>();
+
     FragmentNewsBinding fragmentNewsBinding;
     private OnFragmentInteractionListener mListener;
 
@@ -78,9 +83,15 @@ public class NewsFragment extends Fragment {
     {
         LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
         fragmentNewsBinding.recyclerview.setHasFixedSize(true);
-        fragmentNewsBinding.recyclerview.setAdapter(new NewsRecycleViewAdapter());
+        fragmentNewsBinding.recyclerview.setAdapter(new NewsRecycleViewAdapter(dataList,getContext()));
         fragmentNewsBinding.recyclerview.setLayoutManager(MyLayoutManager);
         MyLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
+        dataList.add(new NewsListModel("น้ำท่วมใหญ่","น้ำท่วมที่ จังหวัดอุดรธานี เป็นจำนวนมาก"));
+        dataList.add(new NewsListModel("ฝนตกหนัก","ฝนตกหนัก น้ำไหลบาก"));
+        dataList.add(new NewsListModel("ไฟไหม้","ไฟไหม้ บ้านเรือนเสียหาย"));
+        dataList.add(new NewsListModel("วาตะภัย","ลมแรง เหมาะแก่การทำโซล่าเซล"));
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

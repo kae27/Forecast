@@ -3,7 +3,7 @@ package com.example.dell.forecast;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class NewsActivity extends AppCompatActivity {
+public class NewsContentActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
