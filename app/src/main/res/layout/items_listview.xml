@@ -33,7 +33,7 @@
                 android:layout_height="100dp"
                 android:scaleType="fitStart"
                 android:padding="7dp"
-                android:background="@color/blood_dark"
+
                 android:src="@drawable/news"/>
 
             <TextView
@@ -50,7 +50,7 @@
                 android:id="@+id/content_news_text_view"
                 android:layout_below="@id/list_view_title"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_marginLeft="110dp"
                 android:text="content"/>
             <TextView

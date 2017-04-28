@@ -2,7 +2,8 @@
 
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
 
     <ScrollView
@@ -10,15 +11,17 @@
         android:layout_height="match_parent">
 
 <RelativeLayout
+
     android:id="@+id/activity_news"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.dell.forecast.NewsContentActivity">
 
     <android.support.percent.PercentRelativeLayout
+        android:id="@+id/newsBar"
         android:background="@drawable/shape_background"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="50dp">
 
         <ImageView
             android:layout_marginLeft="15dp"
@@ -45,18 +48,50 @@
 
 
 
+<FrameLayout
+    android:id="@+id/view_pagerFrame"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/newsBar">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager_image_news"
         android:layout_width="match_parent"
-        android:layout_height="300dp" />
+        android:layout_height="230dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center"
+        android:background="@drawable/ic_keyboard_arrow_right_black_36dp"/>
+
+</FrameLayout>
+
+
 
     <TextView
+        android:id="@+id/newsTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:textSize="20sp"
         android:text="Title"
-        android:layout_below="@+id/view_pager_image_news"/>
+        android:textColor="#000000"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/view_pagerFrame"/>
+
+    <TextView
+        android:id="@+id/newsContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newsTitle"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
 
 
 </RelativeLayout>

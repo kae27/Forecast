@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.dell.forecast.databinding.ActivityChartViewBinding;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
@@ -60,7 +62,8 @@ public class ChartViewActivity extends AppCompatActivity
                 Log.e("ViewActivity", "size of temp " + list.size());  //size=33 object
                 Log.e("Tag", "succec " + list.get(0).getSuccess());
 
-            if(list.get(0).getSuccess()==1) {
+            if(list.get(0).getSuccess()==1)
+            {
                 size = list.size();
                 temp = 0.0;
                 min = (int) list.get(0).getWamDragCo();
@@ -194,229 +197,243 @@ public class ChartViewActivity extends AppCompatActivity
 
             setDefault();
             entries.clear();
-            size = list.size();
+
             max= 0 ;
             min= 0 ;
 
+         try
+         {
+             if(list.get(0).getSuccess()==1)
+             {
+                 size = list.size();
 
-            if(list.get(0).getSuccess()==1) {
-                switch (v.getId()) {
+                 switch (v.getId()) {
 
-                    case R.id.dragCoefficient:
-                        setActive(v.getId());
-                        min = (int) list.get(0).getWamDragCo();
-                        temp = 0.0;
-                        for (int i = 0; i < size; i++) {
-                            entries.add(new Entry((float) temp, list.get(i).getWamDragCo()));
-                            temp = temp + 0.125;
+                     case R.id.dragCoefficient:
+                         setActive(v.getId());
+                         min = (int) list.get(0).getWamDragCo();
+                         temp = 0.0;
+                         for (int i = 0; i < size; i++) {
+                             entries.add(new Entry((float) temp, list.get(i).getWamDragCo()));
+                             temp = temp + 0.125;
 
-                            if (list.get(i).getWamDragCo() > max)
-                                max = (int) list.get(i).getWamDragCo();
+                             if (list.get(i).getWamDragCo() > max)
+                                 max = (int) list.get(i).getWamDragCo();
 
-                            if (list.get(i).getWamDragCo() < min)
-                                min = (int) list.get(i).getWamDragCo();
-                        }
+                             if (list.get(i).getWamDragCo() < min)
+                                 min = (int) list.get(i).getWamDragCo();
+                         }
 
-                        dataset.setLabel("Drag Coefficient");
+                         dataset.setLabel("Drag Coefficient");
 
-                        break;
+                         break;
 
-                    case R.id.fictionVeiocity:
-                        setActive(v.getId());
-                        min = (int) list.get(0).getWamUstar10();
-                        temp = 0.0;
-                        for (int i = 0; i < size; i++) {
-                            entries.add(new Entry((float) temp, list.get(i).getWamUstar10()));
-                            temp = temp + 0.125;
+                     case R.id.fictionVeiocity:
+                         setActive(v.getId());
+                         min = (int) list.get(0).getWamUstar10();
+                         temp = 0.0;
+                         for (int i = 0; i < size; i++) {
+                             entries.add(new Entry((float) temp, list.get(i).getWamUstar10()));
+                             temp = temp + 0.125;
 
-                            if (list.get(i).getWamUstar10() > max)
-                                max = (int) list.get(i).getWamUstar10();
+                             if (list.get(i).getWamUstar10() > max)
+                                 max = (int) list.get(i).getWamUstar10();
 
-                            if (list.get(i).getWamUstar10() < min)
-                                min = (int) list.get(i).getWamUstar10();
-                        }
+                             if (list.get(i).getWamUstar10() < min)
+                                 min = (int) list.get(i).getWamUstar10();
+                         }
 
-                        dataset.setLabel("Fiction Veiocity");
+                         dataset.setLabel("Fiction Veiocity");
 
-                        break;
+                         break;
 
-                    case R.id.meanFrequency:
-                        setActive(v.getId());
-                        min = (int) list.get(0).getWam_mFreqy();
-                        temp = 0.0;
-                        for (int i = 0; i < size; i++) {
-                            entries.add(new Entry((float) temp, list.get(i).getWam_mFreqy()));
-                            temp = temp + 0.125;
+                     case R.id.meanFrequency:
+                         setActive(v.getId());
+                         min = (int) list.get(0).getWam_mFreqy();
+                         temp = 0.0;
+                         for (int i = 0; i < size; i++) {
+                             entries.add(new Entry((float) temp, list.get(i).getWam_mFreqy()));
+                             temp = temp + 0.125;
 
-                            if (list.get(i).getWam_mFreqy() > max)
-                                max = (int) list.get(i).getWam_mFreqy();
+                             if (list.get(i).getWam_mFreqy() > max)
+                                 max = (int) list.get(i).getWam_mFreqy();
 
-                            if (list.get(i).getWam_mFreqy() < min)
-                                min = (int) list.get(i).getWam_mFreqy();
-                        }
+                             if (list.get(i).getWam_mFreqy() < min)
+                                 min = (int) list.get(i).getWam_mFreqy();
+                         }
 
-                        dataset.setLabel("Mean Frequency");
+                         dataset.setLabel("Mean Frequency");
 
-                        break;
+                         break;
 
-                    case R.id.meanPeriod:
-                        setActive(v.getId());
-                        min = (int) list.get(0).getWam_mPerio();
-                        temp = 0.0;
-                        for (int i = 0; i < size; i++) {
-                            entries.add(new Entry((float) temp, list.get(i).getWam_mPerio()));
-                            temp = temp + 0.125;
+                     case R.id.meanPeriod:
+                         setActive(v.getId());
+                         min = (int) list.get(0).getWam_mPerio();
+                         temp = 0.0;
+                         for (int i = 0; i < size; i++) {
+                             entries.add(new Entry((float) temp, list.get(i).getWam_mPerio()));
+                             temp = temp + 0.125;
 
-                            if (list.get(i).getWam_mPerio() > max)
-                                max = (int) list.get(i).getWam_mPerio();
+                             if (list.get(i).getWam_mPerio() > max)
+                                 max = (int) list.get(i).getWam_mPerio();
 
-                            if (list.get(i).getWam_mPerio() < min)
-                                min = (int) list.get(i).getWam_mPerio();
-                        }
+                             if (list.get(i).getWam_mPerio() < min)
+                                 min = (int) list.get(i).getWam_mPerio();
+                         }
 
-                        dataset.setLabel("Mean Period");
+                         dataset.setLabel("Mean Period");
 
-                        break;
+                         break;
 
-                    case R.id.meanWaveDirection:
-                        setActive(v.getId());
-                        min = (int) list.get(0).getWamWaveDir();
-                        temp = 0.0;
-                        for (int i = 0; i < size; i++) {
-                            entries.add(new Entry((float) temp, list.get(i).getWamWaveDir()));
-                            temp = temp + 0.125;
-                            if (list.get(i).getWamWaveDir() > max)
-                                max = (int) list.get(i).getWamWaveDir();
+                     case R.id.meanWaveDirection:
+                         setActive(v.getId());
+                         min = (int) list.get(0).getWamWaveDir();
+                         temp = 0.0;
+                         for (int i = 0; i < size; i++) {
+                             entries.add(new Entry((float) temp, list.get(i).getWamWaveDir()));
+                             temp = temp + 0.125;
+                             if (list.get(i).getWamWaveDir() > max)
+                                 max = (int) list.get(i).getWamWaveDir();
 
-                            if (list.get(i).getWamWaveDir() < min)
-                                min = (int) list.get(i).getWamWaveDir();
-                        }
+                             if (list.get(i).getWamWaveDir() < min)
+                                 min = (int) list.get(i).getWamWaveDir();
+                         }
 
-                        dataset.setLabel("Mean Wave Direction");
+                         dataset.setLabel("Mean Wave Direction");
 
-                        break;
+                         break;
 
-                    case R.id.normallizedWave:
-                        setActive(v.getId());
-                        min = (int) list.get(0).getWamWaveSte();
-                        temp = 0.0;
-                        for (int i = 0; i < size; i++) {
-                            entries.add(new Entry((float) temp, list.get(i).getWamWaveSte()));
-                            temp = temp + 0.125;
-                            if (list.get(i).getWamWaveSte() > max)
-                                max = (int) list.get(i).getWamWaveSte();
+                     case R.id.normallizedWave:
+                         setActive(v.getId());
+                         min = (int) list.get(0).getWamWaveSte();
+                         temp = 0.0;
+                         for (int i = 0; i < size; i++) {
+                             entries.add(new Entry((float) temp, list.get(i).getWamWaveSte()));
+                             temp = temp + 0.125;
+                             if (list.get(i).getWamWaveSte() > max)
+                                 max = (int) list.get(i).getWamWaveSte();
 
-                            if (list.get(i).getWamWaveSte() < min)
-                                min = (int) list.get(i).getWamWaveSte();
-                        }
+                             if (list.get(i).getWamWaveSte() < min)
+                                 min = (int) list.get(i).getWamWaveSte();
+                         }
 
-                        dataset.setLabel("Normallized Wave Stress");
+                         dataset.setLabel("Normallized Wave Stress");
 
-                        break;
+                         break;
 
-                    case R.id.significantWaveHight:
-                        setActive(v.getId());
-                        min = (int) list.get(0).getWamWaveHgt();
-                        temp = 0.0;
-                        for (int i = 0; i < size; i++) {
-                            entries.add(new Entry((float) temp, list.get(i).getWamWaveHgt()));
-                            temp = temp + 0.125;
-                            if (list.get(i).getWamWaveHgt() > max)
-                                max = (int) list.get(i).getWamWaveHgt();
+                     case R.id.significantWaveHight:
+                         setActive(v.getId());
+                         min = (int) list.get(0).getWamWaveHgt();
+                         temp = 0.0;
+                         for (int i = 0; i < size; i++) {
+                             entries.add(new Entry((float) temp, list.get(i).getWamWaveHgt()));
+                             temp = temp + 0.125;
+                             if (list.get(i).getWamWaveHgt() > max)
+                                 max = (int) list.get(i).getWamWaveHgt();
 
-                            if (list.get(i).getWamWaveHgt() < min)
-                                min = (int) list.get(i).getWamWaveHgt();
-                        }
+                             if (list.get(i).getWamWaveHgt() < min)
+                                 min = (int) list.get(i).getWamWaveHgt();
+                         }
 
-                        dataset.setLabel("Significant Wave Hight");
+                         dataset.setLabel("Significant Wave Hight");
 
-                        break;
+                         break;
 
-                    case R.id.wavePeakFrequency:
-                        setActive(v.getId());
-                        min = (int) list.get(0).getWam_pFreqy();
-                        temp = 0.0;
-                        for (int i = 0; i < size; i++) {
-                            entries.add(new Entry((float) temp, list.get(i).getWam_pFreqy()));
-                            temp = temp + 0.125;
-                            if (list.get(i).getWam_pFreqy() > max)
-                                max = (int) list.get(i).getWam_pFreqy();
+                     case R.id.wavePeakFrequency:
+                         setActive(v.getId());
+                         min = (int) list.get(0).getWam_pFreqy();
+                         temp = 0.0;
+                         for (int i = 0; i < size; i++) {
+                             entries.add(new Entry((float) temp, list.get(i).getWam_pFreqy()));
+                             temp = temp + 0.125;
+                             if (list.get(i).getWam_pFreqy() > max)
+                                 max = (int) list.get(i).getWam_pFreqy();
 
-                            if (list.get(i).getWam_pFreqy() < min)
-                                min = (int) list.get(i).getWam_pFreqy();
-                        }
+                             if (list.get(i).getWam_pFreqy() < min)
+                                 min = (int) list.get(i).getWam_pFreqy();
+                         }
 
-                        dataset.setLabel("Wave Peak Frequency");
+                         dataset.setLabel("Wave Peak Frequency");
 
-                        break;
+                         break;
 
-                    case R.id.wavePeakPeriod:
-                        setActive(v.getId());
-                        min = (int) list.get(0).getWam_pPerio();
-                        temp = 0.0;
-                        for (int i = 0; i < size; i++) {
-                            entries.add(new Entry((float) temp, list.get(i).getWam_pPerio()));
-                            temp = temp + 0.125;
-                            if (list.get(i).getWam_pPerio() > max)
-                                max = (int) list.get(i).getWam_pPerio();
+                     case R.id.wavePeakPeriod:
+                         setActive(v.getId());
+                         min = (int) list.get(0).getWam_pPerio();
+                         temp = 0.0;
+                         for (int i = 0; i < size; i++) {
+                             entries.add(new Entry((float) temp, list.get(i).getWam_pPerio()));
+                             temp = temp + 0.125;
+                             if (list.get(i).getWam_pPerio() > max)
+                                 max = (int) list.get(i).getWam_pPerio();
 
-                            if (list.get(i).getWam_pPerio() < min)
-                                min = (int) list.get(i).getWam_pPerio();
-                        }
+                             if (list.get(i).getWam_pPerio() < min)
+                                 min = (int) list.get(i).getWam_pPerio();
+                         }
 
-                        dataset.setLabel("Wave Peak Period");
+                         dataset.setLabel("Wave Peak Period");
 
-                        break;
+                         break;
 
-                    case R.id.windDirection:
-                        setActive(v.getId());
-                        min = (int) list.get(0).getWamWindDir();
-                        temp = 0.0;
-                        for (int i = 0; i < size; i++) {
-                            entries.add(new Entry((float) temp, list.get(i).getWamWindDir()));
-                            temp = temp + 0.125;
-                            if (list.get(i).getWamWindDir() > max)
-                                max = (int) list.get(i).getWamWindDir();
+                     case R.id.windDirection:
+                         setActive(v.getId());
+                         min = (int) list.get(0).getWamWindDir();
+                         temp = 0.0;
+                         for (int i = 0; i < size; i++) {
+                             entries.add(new Entry((float) temp, list.get(i).getWamWindDir()));
+                             temp = temp + 0.125;
+                             if (list.get(i).getWamWindDir() > max)
+                                 max = (int) list.get(i).getWamWindDir();
 
-                            if (list.get(i).getWamWindDir() < min)
-                                min = (int) list.get(i).getWamWindDir();
-                        }
+                             if (list.get(i).getWamWindDir() < min)
+                                 min = (int) list.get(i).getWamWindDir();
+                         }
 
-                        dataset.setLabel("Wind Direction");
+                         dataset.setLabel("Wind Direction");
 
-                        break;
+                         break;
 
-                    case R.id.windSpeed:
-                        setActive(v.getId());
+                     case R.id.windSpeed:
+                         setActive(v.getId());
 
-                        temp = 0.0;
-                        min = (int) list.get(0).getWamWindSpd();
+                         temp = 0.0;
+                         min = (int) list.get(0).getWamWindSpd();
 
-                        for (int i = 0; i < size; i++) {
-                            entries.add(new Entry((float) temp, list.get(i).getWamWindSpd()));
-                            temp = temp + 0.125;
-                            if (list.get(i).getWamWindSpd() > max)
-                                max = (int) list.get(i).getWamWindSpd();
+                         for (int i = 0; i < size; i++) {
+                             entries.add(new Entry((float) temp, list.get(i).getWamWindSpd()));
+                             temp = temp + 0.125;
+                             if (list.get(i).getWamWindSpd() > max)
+                                 max = (int) list.get(i).getWamWindSpd();
 
-                            if (list.get(i).getWamWindSpd() < min)
-                                min = (int) list.get(i).getWamWindSpd();
-                        }
+                             if (list.get(i).getWamWindSpd() < min)
+                                 min = (int) list.get(i).getWamWindSpd();
+                         }
 
-                        dataset.setLabel("Wind Speed");
+                         dataset.setLabel("Wind Speed");
 
-                        break;
-                }
+                         break;
+                 }
 
 
-                binding.chart.animateX(1500);
-                max = max + 50;
-                min = min - 50;
-                yAxis.setAxisMinimum(min); // start at zero
-                yAxis.setAxisMaximum(max); // the axis maximum is 100
-                binding.chart.notifyDataSetChanged();
-                binding.chart.invalidate();
+                 binding.chart.animateX(1500);
+                 max = max + 50;
+                 min = min - 50;
+                 yAxis.setAxisMinimum(min); // start at zero
+                 yAxis.setAxisMaximum(max); // the axis maximum is 100
+                 binding.chart.notifyDataSetChanged();
+                 binding.chart.invalidate();
 
-            }
+             }
+
+         }
+         catch (Exception  e)
+         {
+             Toast.makeText(getApplication(), "Don't click the button",  Toast.LENGTH_SHORT).show();
+             Log.e("Tag", "button disable");
+         }
+
+
+
 
         }
 

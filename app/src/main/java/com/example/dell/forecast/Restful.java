@@ -23,8 +23,8 @@ public class Restful {
 
     final String TAG="HTTP";
     // ใช้ยิงไปยัง server
-    private final String url = "http://192.168.137.1/untitled/";
- //   private final String url = " https://testcodecom.000webhostapp.com/";
+//    private final String url = "http://192.168.137.1/untitled/";
+    private final String url = " https://testcodecom.000webhostapp.com/";
 
 
 

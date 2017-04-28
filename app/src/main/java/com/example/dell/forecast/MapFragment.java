@@ -183,7 +183,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 //            // Show rationale and request permission.
 //        }
 
-        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 
         googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener()
         {
