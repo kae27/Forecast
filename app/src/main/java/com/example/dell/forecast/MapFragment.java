@@ -1,6 +1,7 @@
 package com.example.dell.forecast;
 
 import android.content.Intent;;
+import android.databinding.tool.util.L;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,6 +22,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.PolygonOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
+
 import java.text.DecimalFormat;
 
 
@@ -45,8 +49,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private OnFragmentInteractionListener mListener;
     MapView mapView;
     TextView latView, lngView, ArrayX,ArrayY;
-    private GoogleMap googleMap;
-    private Polygon polygon;
+    GoogleMap googleMap;
+    Polygon largePolygon, clickPolygon;
+    Polyline line1, line2;
     private Double arrayX, arrayY;
     private int pointX,pointY;
     private String fileNameX,fileNameY;
@@ -183,7 +188,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 //            // Show rationale and request permission.
 //        }
 
-        googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
+       largePolygon = googleMap.addPolygon(new PolygonOptions() // Large polygon
+                .add(new LatLng(15, 95),
+                        new LatLng(15, 105.08),
+                        new LatLng(4.92, 105.08),
+                        new LatLng(4.92, 95))
+                .strokeColor(Color.RED).strokeWidth(1)
+                .fillColor(Color.parseColor("#30000000")));
+
 
         googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener()
         {
@@ -195,67 +208,82 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 latView.setText("Lat : "+REAL_FORMATTER.format(latLng.latitude));
                 lngView.setText("Lng : "+REAL_FORMATTER.format(latLng.longitude));
 
-                arrayX = latLng.longitude-95;
-                arrayY = latLng.latitude-4.92;
-                arrayX = (arrayX/0.0826)-1;
-                arrayY = 122-(arrayY/0.0826);
-
-                pointX = arrayX.intValue();
-                pointY = arrayY.intValue();
-                Log.i("point",pointX + "-" +pointY);
 
 
-
-                fileNameX = String.valueOf(pointX);
-                fileNameY = String.valueOf(pointY);
-                if((pointX>=0&&pointX<=121) &&(pointY>=0&&pointY<=121) )
+                if((latLng.longitude>=95 && latLng.latitude<=15)&&(latLng.longitude<=105.08 && latLng.latitude>=4.92))
                 {
+                    if(latLng.longitude > 105.0793 && latLng.longitude <=105.08)
+                    {
+                        arrayX = 105.0793-95;
+                    }else
+                    {
+                        arrayX = latLng.longitude-95;
+                    }
+
+
+                    arrayY = 15-latLng.latitude;
+                    arrayX =(arrayX/0.0833);
+                    arrayY =(arrayY/0.0833);
+                    Log.i("array",arrayX + "-" +arrayY);
+
+                    pointX = arrayX.intValue();
+                    pointY = arrayY.intValue();
+                    Log.i("point",pointX + "-" +pointY);
+
+                    clickPolygon = googleMap.addPolygon(new PolygonOptions()
+                            .add(new LatLng(15 - (0.0833 * pointY), 95 + (0.0833 * pointX)),
+                                    new LatLng(15 - (0.0833 * pointY), 95 + (0.0833 * pointX) + 0.0833),
+                                    new LatLng(15 - (0.0833 * pointY) - 0.0833, 95 + (0.0833 * pointX) + 0.0833),
+                                    new LatLng(15 - (0.0833 * pointY) - 0.0833, 95 + (0.0833 * pointX)))
+                            .strokeColor(Color.RED).strokeWidth(1)
+                            .fillColor(Color.parseColor("#C62828")));
+
+
+
+                    pointX = pointX+1;
+                    pointY = pointY+1;
+                    fileNameX = String.valueOf(pointX);
+                    fileNameY = String.valueOf(pointY);
                     ArrayX.setText("X : "+fileNameX);
                     ArrayY.setText("Y : "+fileNameY);
+
+                    if(fileNameX.length()==1)  // make point file name for send to sever .php
+                    {
+                        fileNameX = "00"+fileNameX;
+                    }
+                    else if (fileNameX.length()==2)
+                    {
+                        fileNameX = "0"+fileNameX;
+                    }
+
+
+                    if (fileNameY.length()==1)
+                    {
+                        fileNameY = "00"+fileNameY;
+                    }
+                    else if (fileNameY.length()==2)
+                    {
+                        fileNameY = "0"+fileNameY;
+                    }
+
+                    Log.i("name",""+fileNameX+"- " + fileNameY);
+
                 }
                 else
                 {
+                    fileNameX="121";//ดิน
+                    fileNameY="001";
                     ArrayX.setText("X : -");
                     ArrayY.setText("Y : -");
                 }
-
-
-                if(fileNameX.length()==1)
-                {
-                    fileNameX = "00"+fileNameX;
-                }
-                else if (fileNameX.length()==2)
-                {
-                    fileNameX = "0"+fileNameX;
-                }
-
-
-                if (fileNameY.length()==1)
-                {
-                    fileNameY = "00"+fileNameY;
-                }
-                else if (fileNameY.length()==2)
-                {
-                    fileNameY = "0"+fileNameY;
-                }
-
-                Log.i("name",""+fileNameX+"- " + fileNameY);
-
 
             }
         });
 
 
-        polygon = mMap.addPolygon(new PolygonOptions()
-                .add(new LatLng(15, 95),
-                        new LatLng(15, 105.08),
-                        new LatLng(4.92, 105.08),
-                        new LatLng(4.92, 95))
-                .strokeColor(Color.RED).strokeWidth(1)
-                .fillColor(Color.parseColor("#30000000")));
 
 
-
+        googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
         // For zooming automatically to the location of the marker
         googleMap.addMarker(new MarkerOptions().position(bangkok).title("Thailand"));
         CameraPosition cameraPosition = new CameraPosition.Builder().target(bangkok).zoom(5).build();
