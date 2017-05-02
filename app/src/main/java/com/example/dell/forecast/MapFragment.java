@@ -210,16 +210,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 lngView.setText("Lng : "+REAL_FORMATTER.format(latLng.longitude));
 
 
-                if(check>0)
-                {
-                    clickPolygon.remove();
-                    line1.remove();
-                    line2.remove();
-                }
 
 
                 if((latLng.longitude>=95 && latLng.latitude<=15)&&(latLng.longitude<=105.08 && latLng.latitude>=4.92))
                 {
+                    if(check>0)
+                    {
+                        clickPolygon.remove();
+                        line1.remove();
+                        line2.remove();
+                    }
+
                     if(latLng.longitude > 105.0793 && latLng.longitude <=105.08)
                     {
                         arrayX = 105.0793-95;
