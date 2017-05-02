@@ -47,14 +47,14 @@
                     android:id="@+id/array_x"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="X : 71"/>
+                    android:text="X : 72"/>
 
                 <TextView
                     android:id="@+id/array_y"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:text="Y : 24"/>
+                    android:text="Y : 47"/>
 
             </LinearLayout>
 
@@ -62,13 +62,13 @@
                 android:id="@+id/lat_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lat : 13.000"/>
+                android:text="Lat : 11.093"/>
 
             <TextView
                 android:id="@+id/lng_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lng : 101.000"/>
+                android:text="Lng : 100.958"/>
     </LinearLayout>
 
 

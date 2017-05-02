@@ -180,7 +180,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         final DecimalFormat REAL_FORMATTER = new DecimalFormat("0.###");
         googleMap = mMap;
-        LatLng bangkok = new LatLng(11, 99);
+
+        LatLng thailand = new LatLng(10.2, 100);
+        googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(thailand).zoom(6).build();
+        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
 //        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
 //                == PackageManager.PERMISSION_GRANTED) {
@@ -198,6 +202,32 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 .strokeColor(Color.WHITE).strokeWidth(2)
                 .fillColor(Color.parseColor("#30000000")));
 
+//... initial of point (71,24)..........................................................................................
+        line1 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(15 - (0.0833 * 47)-0.04,  95), new LatLng(15 - (0.0833 * 47)-0.04, 105.08))
+                .width(2)
+                .color(Color.GRAY));
+
+        line2 = googleMap.addPolyline(new PolylineOptions()
+                .add(new LatLng(15, 95 + (0.0833 * 72)+0.04), new LatLng(4.92, 95 + (0.0833 * 72)+0.04))
+                .width(2)
+                .color(Color.GRAY));
+
+        clickPolygon = googleMap.addPolygon(new PolygonOptions()
+                .add(new LatLng(15 - (0.0833 * 47), 95 + (0.0833 * 72)),
+                        new LatLng(15 - (0.0833 * 47), 95 + (0.0833 * 72) + 0.0833),
+                        new LatLng(15 - (0.0833 * 47) - 0.0833, 95 + (0.0833 * 72) + 0.0833),
+                        new LatLng(15 - (0.0833 * 47) - 0.0833, 95 + (0.0833 * 72)))
+                .strokeColor(Color.RED).strokeWidth(2)
+                .fillColor(Color.parseColor("#C62828")));
+        check =1;
+
+// initial file name
+        fileNameX="072";
+        fileNameY="047";
+
+
+
 
         googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener()
         {
@@ -208,8 +238,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
                 latView.setText("Lat : "+REAL_FORMATTER.format(latLng.latitude));
                 lngView.setText("Lng : "+REAL_FORMATTER.format(latLng.longitude));
-
-
 
 
                 if((latLng.longitude>=95 && latLng.latitude<=15)&&(latLng.longitude<=105.08 && latLng.latitude>=4.92))
@@ -262,7 +290,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     check = check+1; // check state for remove polygon and line
 
 
-
+ // ........make point file name for send to sever .php.............................................................................
                     pointX = pointX+1;
                     pointY = pointY+1;
                     fileNameX = String.valueOf(pointX);
@@ -270,7 +298,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                     ArrayX.setText("X : "+fileNameX);
                     ArrayY.setText("Y : "+fileNameY);
 
-                    if(fileNameX.length()==1)  // make point file name for send to sever .php
+                    if(fileNameX.length()==1)
                     {
                         fileNameX = "00"+fileNameX;
                     }
@@ -303,13 +331,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-
-
-
-        googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
-        // For zooming automatically to the location of the marker
-        CameraPosition cameraPosition = new CameraPosition.Builder().target(bangkok).zoom(6).build();
-        googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
     }
 
 }
