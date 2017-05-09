@@ -29,8 +29,7 @@ public class SettingsFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-    Switch downloadSwitch;
-    TextView switchStatus;
+
 
     public SettingsFragment() {
         // Required empty public constructor

@@ -9,7 +9,7 @@ public class SplashActivity extends AppCompatActivity {
     Handler handler;
     Runnable runnable;
     long delayTime;
-    long time=3000L;
+    long time=2000L;
 
     @Override
     protected void onResume() {
