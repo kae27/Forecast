@@ -6,12 +6,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+
 import com.example.dell.forecast.databinding.FragmentNewsBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -32,8 +36,8 @@ public class NewsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    Context context;
     ArrayList<NewsListModel> dataList = new ArrayList<NewsListModel>();
-
     FragmentNewsBinding fragmentNewsBinding;
     private OnFragmentInteractionListener mListener;
 
@@ -81,9 +85,10 @@ public class NewsFragment extends Fragment {
 
     public void initInstance()
     {
+
         LinearLayoutManager MyLayoutManager = new LinearLayoutManager(getActivity());
         fragmentNewsBinding.recyclerview.setHasFixedSize(true);
-        fragmentNewsBinding.recyclerview.setAdapter(new NewsRecycleViewAdapter(dataList,getContext()));
+        fragmentNewsBinding.recyclerview.setAdapter(new NewsRecycleViewAdapter(dataList,context));
         fragmentNewsBinding.recyclerview.setLayoutManager(MyLayoutManager);
         MyLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
@@ -149,7 +154,6 @@ public class NewsFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
 
 
 

@@ -33,8 +33,10 @@
             android:id="@+id/ntb_horizontal"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            app:ntb_bg_color="#ffffff"
+            app:ntb_bg_color="#FFA000"
             app:ntb_title_size="12sp"
+            app:ntb_active_color="#FFA000"
+            app:ntb_inactive_color="#fff"
             app:ntb_badge_bg_color="#ffff0000"
             app:ntb_badge_gravity="bottom"
             app:ntb_badge_position="center"
@@ -44,6 +46,8 @@
             app:ntb_title_mode="active"
             app:ntb_titled="true"
             app:ntb_scaled="false"
+            app:ntb_swiped="true"
+            app:ntb_icon_size_fraction="0.5"
             />
 
     </FrameLayout>
